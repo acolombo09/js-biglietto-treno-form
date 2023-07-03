@@ -35,7 +35,7 @@ usare una select per far scegliere la fascia d’età all’utente
 
 // const firstName = prompt("Inserisci il tuo nome");
 // const lastName = prompt("Inserisci il tuo cognome");
-// const reqKms = prompt("Quanti Km hai bisogno di percorrere?");
+const reqKms = prompt("Quanti Km hai bisogno di percorrere?");
 // const age = prompt("Inserisci la tua età");
 const pricePerKm = 0.21;
 
