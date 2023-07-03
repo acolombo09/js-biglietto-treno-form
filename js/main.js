@@ -35,15 +35,47 @@ usare una select per far scegliere la fascia d’età all’utente
 
 // const firstName = prompt("Inserisci il tuo nome");
 // const lastName = prompt("Inserisci il tuo cognome");
-const reqKms = prompt("Quanti Km hai bisogno di percorrere?");
+// const reqKms = prompt("Quanti Km hai bisogno di percorrere?");
 // const age = prompt("Inserisci la tua età");
-const pricePerKm = 0.21;
+
 
 // document.getElementById("age").innerHTML = age;
 // document.getElementById("req-kms").innerHTML = reqKms;
 
-const priceKms = (reqKms * pricePerKm).toFixed(2);
+// document.getElementById("first-name").innerHTML = firstName;
+// document.getElementById("last-name").innerHTML =  lastName;
 
+const reqkmsInputElement = document.querySelector("[name='reqkms']");
+const yourageInputElement = document.querySelector("[name='yourage']");
+const firstnameInputElement = document.querySelector("[name='firstname']");
+const lastnameInputElement = document.querySelector("[name='lastname']");
+const btnLogin = document.querySelector(".login");
+
+let reqkms;
+
+btnLogin.addEventListener("click", function() {
+  // console.log("mi hai cliccato");
+  const reqkms = reqkmsInputElement.value;
+  console.log(reqkms);
+  const yourage = yourageInputElement.value;
+  console.log(yourage);
+  const firstname = firstnameInputElement.value;
+  console.log(firstname);
+  const lastname = lastnameInputElement.value;
+  console.log(lastname);
+
+  if (reqkms && yourage > 0) {
+    alert("La tua richiesta è andata a buon fine");
+  } else {
+    alert("ERRORE nell'inserimento dei dati");
+  }
+
+})
+
+reqkms = (reqkmsInputElement.value);
+
+const pricePerKm = 0.21;
+const priceKms = (reqkms * pricePerKm).toFixed(2);
 document.getElementById("price-kms").innerHTML = priceKms + " €";
 
 let coupon = 0;
@@ -66,16 +98,3 @@ let discountAmount = (priceKms * coupon) / 100;
 
 const finalPrice = (priceKms - discountAmount).toFixed(2);
 document.getElementById("final-price").innerHTML = finalPrice + " €";
-
-// document.getElementById("first-name").innerHTML = firstName;
-// document.getElementById("last-name").innerHTML =  lastName;
-
-const reqkmsInputElement = document.querySelector("[name='reqkms']");
-const yourageInputElement = document.querySelector("[name='yourage']");
-const btnLogin = document.querySelector(".login");
-
-btnLogin.addEventListener("click", function() {
-
-  console.log("mi hai cliccato");
-
-})
