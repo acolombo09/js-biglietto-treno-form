@@ -51,28 +51,25 @@ const firstnameInputElement = document.querySelector("[name='firstname']");
 const lastnameInputElement = document.querySelector("[name='lastname']");
 const btnLogin = document.querySelector(".login");
 
-let reqkms;
+const reqkms = reqkmsInputElement.value;
+const yourage = yourageInputElement.value;
+const firstname = firstnameInputElement.value;
+const lastname = lastnameInputElement.value;
 
 btnLogin.addEventListener("click", function() {
   // console.log("mi hai cliccato");
-  const reqkms = reqkmsInputElement.value;
-  console.log(reqkms);
-  const yourage = yourageInputElement.value;
-  console.log(yourage);
-  const firstname = firstnameInputElement.value;
-  console.log(firstname);
-  const lastname = lastnameInputElement.value;
-  console.log(lastname);
+  console.log(reqkmsInputElement.value);
+  console.log(yourageInputElement.value);
+  console.log(firstnameInputElement.value);
+  console.log(lastnameInputElement.value);
 
-  if (reqkms && yourage > 0) {
+  if (reqkmsInputElement.value && yourageInputElement.value > 0) {
     alert("La tua richiesta è andata a buon fine");
   } else {
     alert("ERRORE nell'inserimento dei dati");
   }
 
 })
-
-reqkms = (reqkmsInputElement.value);
 
 const pricePerKm = 0.21;
 const priceKms = (reqkms * pricePerKm).toFixed(2);
