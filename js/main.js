@@ -33,45 +33,44 @@ al click su annulla, si svuotano i campi e scompare il biglietto
 usare una select per far scegliere la fascia d’età all’utente
 */
 
-const reqkmsInputElement = document.querySelector("[name='reqkms']");
-const yourageInputElement = document.querySelector("[name='yourage']");
-const firstnameInputElement = document.querySelector("[name='firstname']");
-const lastnameInputElement = document.querySelector("[name='lastname']");
 const btnLogin = document.querySelector(".login");
 const pricePerKm = 0.21;
 
-const reqkms = reqkmsInputElement.value;
-const yourage = yourageInputElement.value;
-const firstname = firstnameInputElement.value;
-const lastname = lastnameInputElement.value;
-
-let coupon = 0;
-
-if ((yourageInputElement.value) < 18) {
-  coupon = 20;
-} else if ((yourageInputElement.value) > 65) {
-  coupon = 40;
-}
-
 btnLogin.addEventListener("click", function() {
-  console.log(reqkmsInputElement.value);
-  console.log(yourageInputElement.value);
-  console.log(firstnameInputElement.value);
-  console.log(lastnameInputElement.value);
+  const reqkmsInputElement = document.querySelector("[name='reqkms']");
+  const yourageInputElement = document.querySelector("[name='yourage']");
+  const firstnameInputElement = document.querySelector("[name='firstname']");
+  const lastnameInputElement = document.querySelector("[name='lastname']");
 
-  if ((yourageInputElement.value) < 18) {
-    document.getElementById("discount-calc").innerHTML = (coupon + " %");
-  } else if ((yourageInputElement.value) > 65){
-    document.getElementById("discount-calc").innerHTML = (coupon + " %");
+  const reqkms = reqkmsInputElement.value;
+  const yourage = yourageInputElement.value;
+  const firstname = firstnameInputElement.value;
+  const lastname = lastnameInputElement.value;
+
+  let coupon = 0;
+
+  if (yourage < 18) {
+    coupon = 20;
+  } else if (yourage > 65) {
+    coupon = 40;
+  }
+
+  console.log(reqkms);
+  console.log(yourage);
+  console.log(firstname);
+  console.log(lastname);
+
+  if (yourage < 18 || yourage > 65) {
+    document.getElementById("discount-calc").innerHTML = coupon + " %";
   } else {
     document.getElementById("discount-calc").innerHTML = "No discounts";
   }
-})
 
-const pricekms = ((reqkmsInputElement.value) * pricePerKm).toFixed(2);
-document.getElementById("price-kms").innerHTML = pricekms + " €";
+  const pricekms = (reqkms * pricePerKm).toFixed(2);
+  document.getElementById("price-kms").innerHTML = pricekms + " €";
 
-let discountAmount = (pricekms * coupon) / 100;
+  let discountAmount = (pricekms * coupon) / 100;
 
-const finalPrice = (pricekms - discountAmount).toFixed(2);
-document.getElementById("final-price").innerHTML = finalPrice + " €";
+  const finalPrice = (pricekms - discountAmount).toFixed(2);
+  document.getElementById("final-price").innerHTML = finalPrice + " €";
+});
