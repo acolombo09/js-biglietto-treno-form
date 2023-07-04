@@ -29,21 +29,9 @@ Potete scegliere di implementare una soluzione completamente diversa oppure simi
 ma in ogni caso cercate di farla vostra.
 
 Bonus:
-al click su annulla, si svuotano i campi e scopare il biglietto
+al click su annulla, si svuotano i campi e scompare il biglietto
 usare una select per far scegliere la fascia d’età all’utente
 */
-
-// const firstName = prompt("Inserisci il tuo nome");
-// const lastName = prompt("Inserisci il tuo cognome");
-// const reqKms = prompt("Quanti Km hai bisogno di percorrere?");
-// const age = prompt("Inserisci la tua età");
-
-
-// document.getElementById("age").innerHTML = age;
-// document.getElementById("req-kms").innerHTML = reqKms;
-
-// document.getElementById("first-name").innerHTML = firstName;
-// document.getElementById("last-name").innerHTML =  lastName;
 
 const reqkmsInputElement = document.querySelector("[name='reqkms']");
 const yourageInputElement = document.querySelector("[name='yourage']");
@@ -57,7 +45,6 @@ const firstname = firstnameInputElement.value;
 const lastname = lastnameInputElement.value;
 
 btnLogin.addEventListener("click", function() {
-  // console.log("mi hai cliccato");
   console.log(reqkmsInputElement.value);
   console.log(yourageInputElement.value);
   console.log(firstnameInputElement.value);
@@ -72,26 +59,26 @@ btnLogin.addEventListener("click", function() {
 })
 
 const pricePerKm = 0.21;
-const priceKms = (reqkms * pricePerKm).toFixed(2);
-document.getElementById("price-kms").innerHTML = priceKms + " €";
-
 let coupon = 0;
 
-if (age < 18) {
+if ((yourageInputElement.value) < 18) {
     coupon = 20;
-  } else if (age > 65) {
+  } else if ((yourageInputElement.value) > 65) {
     coupon = 40;
 }
 
-if (age < 18) {
+if ((yourageInputElement.value) < 18) {
   document.getElementById("discount-calc").innerHTML = (coupon + " %");
-  } else if (age > 65){
+  } else if ((yourageInputElement.value) > 65){
   document.getElementById("discount-calc").innerHTML = (coupon + " %");
   } else {
   document.getElementById("discount-calc").innerHTML = "No discounts applied";
 }
 
-let discountAmount = (priceKms * coupon) / 100;
+const pricekms = ((reqkmsInputElement.value) * pricePerKm).toFixed(2);
+document.getElementById("price-kms").innerHTML = pricekms + " €";
 
-const finalPrice = (priceKms - discountAmount).toFixed(2);
+let discountAmount = (pricekms * coupon) / 100;
+
+const finalPrice = (pricekms - discountAmount).toFixed(2);
 document.getElementById("final-price").innerHTML = finalPrice + " €";
