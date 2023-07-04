@@ -38,11 +38,20 @@ const yourageInputElement = document.querySelector("[name='yourage']");
 const firstnameInputElement = document.querySelector("[name='firstname']");
 const lastnameInputElement = document.querySelector("[name='lastname']");
 const btnLogin = document.querySelector(".login");
+const pricePerKm = 0.21;
 
 const reqkms = reqkmsInputElement.value;
 const yourage = yourageInputElement.value;
 const firstname = firstnameInputElement.value;
 const lastname = lastnameInputElement.value;
+
+let coupon = 0;
+
+if ((yourageInputElement.value) < 18) {
+  coupon = 20;
+} else if ((yourageInputElement.value) > 65) {
+  coupon = 40;
+}
 
 btnLogin.addEventListener("click", function() {
   console.log(reqkmsInputElement.value);
@@ -50,30 +59,14 @@ btnLogin.addEventListener("click", function() {
   console.log(firstnameInputElement.value);
   console.log(lastnameInputElement.value);
 
-  if (reqkmsInputElement.value && yourageInputElement.value > 0) {
-    alert("La tua richiesta è andata a buon fine");
-  } else {
-    alert("ERRORE nell'inserimento dei dati");
-  }
-
-})
-
-const pricePerKm = 0.21;
-let coupon = 0;
-
-if ((yourageInputElement.value) < 18) {
-    coupon = 20;
-  } else if ((yourageInputElement.value) > 65) {
-    coupon = 40;
-}
-
-if ((yourageInputElement.value) < 18) {
-  document.getElementById("discount-calc").innerHTML = (coupon + " %");
+  if ((yourageInputElement.value) < 18) {
+    document.getElementById("discount-calc").innerHTML = (coupon + " %");
   } else if ((yourageInputElement.value) > 65){
-  document.getElementById("discount-calc").innerHTML = (coupon + " %");
+    document.getElementById("discount-calc").innerHTML = (coupon + " %");
   } else {
-  document.getElementById("discount-calc").innerHTML = "No discounts applied";
-}
+    document.getElementById("discount-calc").innerHTML = "No discounts";
+  }
+})
 
 const pricekms = ((reqkmsInputElement.value) * pricePerKm).toFixed(2);
 document.getElementById("price-kms").innerHTML = pricekms + " €";
